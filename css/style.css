@@ -1,0 +1,61 @@
+body .info {
+  max-width: 800px;
+  margin: 0 auto;
+}
+body .info .btn .yearBtn {
+  width: 120px;
+  margin: 5px;
+  padding: 5px 0;
+  background-color: #26cfc2;
+  color: #FFF;
+  border: none;
+  font-weight: bold;
+  font-size: 24px;
+  transition: all 0.2s;
+  border-radius: 8px !important;
+  outline: none;
+  overflow: hidden;
+}
+body .info .btn .yearBtn:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -95px;
+  left: -100%;
+  background: white;
+  width: 50px;
+  height: 200px;
+  opacity: 50%;
+  transform: rotate(-45deg);
+}
+body .info .btn .yearBtn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+body .info .btn .yearBtn:hover:after {
+  left: 120%;
+  transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+  -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+}
+body .info .title h1 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+body .info .title span {
+  color: #26cfc2;
+  font-size: 36px;
+  font-weight: bold;
+}
+body .info .listBox {
+  display: flex;
+  justify-content: space-between;
+}
+body .info .listBox .list {
+  width: 45%;
+}
+body .info .listBox .list h2 {
+  text-align: center;
+}
+body .info .listBox .list .Holiday li, body .info .listBox .list .NoHoliday li {
+  padding-bottom: 10px;
+}/*# sourceMappingURL=style.css.map */

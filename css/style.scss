@@ -1,0 +1,76 @@
+body{
+    .info{
+        max-width: 800px;
+        margin: 0 auto;
+        .btn{
+            .yearBtn{
+                width: 120px;
+                margin:5px;
+                padding: 5px 0;
+
+                background-color: #26cfc2;
+                color: #FFF;
+                border: none;
+                
+                font-weight:bold;
+                font-size: 24px;
+                transition: all 0.2s;
+                border-radius: 8px !important;
+              
+                //光罩效果
+                outline: none;
+                overflow: hidden;
+                //光罩效果
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: -95px;
+                    left: -100%;
+                    background: white;
+                    width: 50px;
+                    height: 200px;
+                    opacity: 50%;
+                    transform: rotate(-45deg);
+                }
+                &:hover{
+                    transform:scale(1.1);
+                    cursor: pointer;
+                    //光罩效果
+                    &:after {
+                    left: 120%;
+                    transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+                    -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+                    }
+                }
+            }
+        }
+        .title{
+            h1{
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            span{
+                color: #26cfc2;
+                font-size: 36px;
+                font-weight: bold;
+            }
+        }
+        .listBox{
+            display: flex;
+            justify-content: space-between;
+
+            .list{
+                width: 45%;
+                h2{
+                    text-align: center;
+                }
+                .Holiday, .NoHoliday{
+                    li{
+                        padding-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
