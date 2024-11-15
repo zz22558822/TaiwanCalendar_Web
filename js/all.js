@@ -1,7 +1,9 @@
 // 手動調整年度
-let year = String(2023)
+let year = String(2025)
 // 自動年度
 let yearNow = new Date().getFullYear().toString();
+// 包含下一年
+yearNow = parseInt(yearNow) + 1
 
 // API串接年度
 let API_Url = `https://cdn.jsdelivr.net/gh/ruyut/TaiwanCalendar/data/${year}.json`
