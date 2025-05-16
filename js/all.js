@@ -14,11 +14,22 @@ let title = document.querySelector('.title');
 
 // 確保資料載入後再顯示
 window.onload = function () {
+    // 每年開始往前找，直到成功載入資料
+    tryLoadAvailableYear(parseInt(yearNow));
+};
+
+// 嘗試載入某年度的資料，若 404 則自動往前一年繼續找
+function tryLoadAvailableYear(year) {
+    let url = `https://cdn.jsdelivr.net/gh/ruyut/TaiwanCalendar/data/${year}.json`;
+
     // 使用API調用
-    axios.get(API_Url_Auto)
+    axios.get(url)
         .then(response => {
             const data = response.data;
-            console.log(data)
+            console.log(`成功載入 ${year} 年資料`, data);
+
+            // 更新 yearNow 成找到的正確年份
+            yearNow = year.toString();
 
             // 總天數
             totalDay(data);
@@ -27,14 +38,23 @@ window.onload = function () {
             // 補班日
             NoHoliday(data);
             // 標題渲染
-            titleYear(yearNow)
+            titleYear(yearNow);
             // 通知日
-            TwoDay(data)
+            TwoDay(data);
             // 開始遞歸查找資料
-            findDataRecursive(parseInt(yearNow));
+            findDataRecursive(year);
         })
-        .catch(error => console.error('錯誤:', error));
-};
+        .catch(error => {
+            if (error.response && error.response.status === 404) {
+                // 若 API 不存在（404），則繼續往前一年嘗試
+                console.warn(`${year} 年資料不存在，嘗試載入前一年`);
+                tryLoadAvailableYear(year - 1);
+            } else {
+                // 其他錯誤情況
+                console.error('錯誤:', error);
+            }
+        });
+}
 
 // 遞歸查找資料的函數
 function findDataRecursive(currentYear) {
